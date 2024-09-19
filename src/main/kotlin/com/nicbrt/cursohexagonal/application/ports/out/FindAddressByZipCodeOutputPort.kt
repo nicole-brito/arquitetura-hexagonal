@@ -6,5 +6,4 @@ import com.nicbrt.cursohexagonal.application.core.domain.Address
 interface FindAddressByZipCodeOutputPort {
 
     fun find(zipCode: String): Address
-
 }
