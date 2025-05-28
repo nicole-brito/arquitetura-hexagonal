@@ -1,6 +1,7 @@
 package com.nicbrt.cursohexagonal.config
 
 import com.nicbrt.cursohexagonal.adapters.out.FindAddressByZipCodeAdapter
+import com.nicbrt.cursohexagonal.adapters.out.SendCpfValidationAdapter
 import com.nicbrt.cursohexagonal.adapters.out.UpdateCustomerAdapter
 import com.nicbrt.cursohexagonal.application.core.usecase.FindCustomerByIdUseCase
 import com.nicbrt.cursohexagonal.application.core.usecase.UpdateCustomerUseCase
@@ -15,10 +16,12 @@ class UpdateCustomerConfig {
     fun updateCustomer(
         findCustomerByIdUseCase: FindCustomerByIdUseCase,
         findAddressByZipCodeAdapter: FindAddressByZipCodeAdapter,
-        updateCustomerAdapter: UpdateCustomerAdapter
-    ) =UpdateCustomerUseCase(
+        updateCustomerAdapter: UpdateCustomerAdapter,
+        sendCpfValidationAdapter: SendCpfValidationAdapter
+    ) = UpdateCustomerUseCase(
             findCustomerByIdUseCase,
             findAddressByZipCodeAdapter,
-            updateCustomerAdapter
+            updateCustomerAdapter,
+        sendCpfValidationAdapter
         )
     }
