@@ -3,6 +3,7 @@ package com.nicbrt.cursohexagonal.adapters.`in`.controller
 import com.nicbrt.cursohexagonal.adapters.`in`.controller.request.CustomerRequest
 import com.nicbrt.cursohexagonal.adapters.`in`.controller.response.CustomerResponse
 import com.nicbrt.cursohexagonal.application.core.domain.Customer
+import com.nicbrt.cursohexagonal.application.ports.`in`.DeleteCustomerByIdInputPort
 import com.nicbrt.cursohexagonal.application.ports.`in`.FindCustomerByIdInputPort
 import com.nicbrt.cursohexagonal.application.ports.`in`.InsertCustomerInputPort
 import com.nicbrt.cursohexagonal.application.ports.`in`.UpdateCustomerInputPort
@@ -23,7 +24,8 @@ import org.springframework.web.bind.annotation.RestController
 class CustomerController(
     private val insertCustomerInputPort: InsertCustomerInputPort,
     private val findCustomerByIdInputPort: FindCustomerByIdInputPort,
-    private val updateCustomerInputPort: UpdateCustomerInputPort
+    private val updateCustomerInputPort: UpdateCustomerInputPort,
+    private val deleteCustomerByIdInputPort: DeleteCustomerByIdInputPort
     ) {
 
     @PostMapping
@@ -54,6 +56,6 @@ class CustomerController(
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable id: String) {
-
+        deleteCustomerByIdInputPort.delete(id)
     }
 }
